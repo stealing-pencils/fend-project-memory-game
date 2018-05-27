@@ -1,7 +1,6 @@
 /*
  * Create a list that holds all of your cards
  */
- let listOfCards = [];
  const findCards = document.querySelectorAll('.card');
 
 /*
@@ -13,7 +12,9 @@
 
  // loop through each card
  for (let i = 0;  i < findCards.length; i ++) {
-   console.log('loop successful');
+   let listOfCards = [];
+   listOfCards.push(findCards);
+   console.log('this is card' + i + listOfCards);
  }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
