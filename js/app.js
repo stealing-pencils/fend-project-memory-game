@@ -13,6 +13,9 @@
  // loop through each card
 findCards.forEach(function(card){
   console.log(card);
+  card.addEventListener('click', function(){
+    console.log('this worked');
+  });
 })
 
 
@@ -48,7 +51,3 @@ function shuffle(array) {
 // document.addEventListener('click', function(){
 //   console.log('you clicked this');
 // })
-
-document.addEventListener('click', function(){
-  console.log('works');
-});
