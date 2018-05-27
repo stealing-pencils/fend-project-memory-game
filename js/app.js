@@ -1,9 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
- const findCards = document.querySelectorAll('.card');
  let listOfCards = [];
-
+ const findCards = document.querySelectorAll('.card');
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -12,13 +11,9 @@
  */
 
  // loop through each card
-   for (let i = 0;  i < findCards.length; i ++) {
-     listOfCards.push(findCards[i]);
-     console.log(listOfCards);
-     console.log('loop successful')
-   }
-
-
+findCards.forEach(function(card){
+  console.log(card);
+})
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -47,3 +42,13 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+// const = document.querySelectorAll('.card');
+//
+// document.addEventListener('click', function(){
+//   console.log('you clicked this');
+// })
+
+document.addEventListener('click', function(){
+  console.log('works');
+});
