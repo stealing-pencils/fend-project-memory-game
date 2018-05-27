@@ -2,6 +2,7 @@
  * Create a list that holds all of your cards
  */
  const findCards = document.querySelectorAll('.card');
+ let listOfCards = [];
 
 /*
  * Display the cards on the page
@@ -11,11 +12,14 @@
  */
 
  // loop through each card
- for (let i = 0;  i < findCards.length; i ++) {
-   let listOfCards = [];
-   listOfCards.push(findCards);
-   console.log('this is card' + i + listOfCards);
- }
+   for (let i = 0;  i < findCards.length; i ++) {
+     listOfCards.push(findCards[i]);
+     console.log(listOfCards);
+     console.log('loop successful')
+   }
+
+
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
