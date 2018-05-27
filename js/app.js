@@ -10,13 +10,14 @@
  *   - add each card's HTML to the page
  */
 
- // loop through each card
+ // loop through each card and add click event listner to each
 findCards.forEach(function(card){
   console.log(card);
   card.addEventListener('click', function(){
-    console.log('this worked');
+    card.setAttribute('class', 'card open show');
   });
 })
+
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
