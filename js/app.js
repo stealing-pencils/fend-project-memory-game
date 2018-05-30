@@ -51,7 +51,9 @@ $('.card').on("click", function flipCardOver(evt){
     let cardTwo = $(evt.target).addClass('open show');
     cardTwo = ($(cardTwo).html());
     cardMatch(cardOne, cardTwo);
-   }
+    numberOpenCards ++
+  }
+
 });
    // *  - if the list already has another card, check to see if the two cards match
 
