@@ -1,14 +1,30 @@
 /*
  * Create a list that holds all of your cards
  */
- const findCards = $('.card');
- let eachCard = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
- $deck = $('.deck');
+ let singleCard = $('.card');
+ let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
+ let deck = $('.deck');
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
 
  */
+
+
+// *   - loop through each card and create its HTML
+// *   - add each card's HTML to the page
+for (card of eachCard) {
+	deck.append($('<li class="card"><i class="'
+   + eachCard + '"></i></li>'));
+}
+
+
+/*
+ * set up the event listener for a card. If a card is clicked: */
+$('.card').on("click", function(evt){
+  $(evt.target).toggleClass('open show');
+});
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -25,19 +41,7 @@ function shuffle(array) {
 }
 
 eachCard = shuffle(eachCard);
-
-// *   - loop through each card and create its HTML
-// *   - add each card's HTML to the page
-for (card of eachCard) {
-	$deck.append($('<li class="card"><i class="'
-   + eachCard + '"></i></li>'));
-}
-
-
-// addElements();
-
 /*
- * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  *  - if the list already has another card, check to see if the two cards match
@@ -48,14 +52,14 @@ for (card of eachCard) {
  */
 
  // DISPLAY THE CARD SYMBOL
-function flipCard() {
-   for(const openCard of findCards) {
-     // console.log(openCard);
-     let cardName = openCard.querySelector('.fa');
-     openCard.addEventListener('click', function(){
-     openCard.setAttribute('class', 'card open show');
-     });
-   }
-}
-
-flipCard();
+// function flipCard() {
+//    for(const openCard of singleCard) {
+//      // console.log(openCard);
+//      let cardName = openCard.querySelector('fa');
+//      openCard.addEventListener('click', function(){
+//      openCard.setAttribute('class', 'card open show');
+//      });
+//    }
+// }
+//
+// flipCard();
