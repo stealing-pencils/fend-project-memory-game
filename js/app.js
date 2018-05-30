@@ -4,6 +4,7 @@
  let singleCard = $('.card');
  let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
  let deck = $('.deck');
+ let numberOpenCards = 0;
 
  // Shuffle function from http://stackoverflow.com/a/2450976
  function shuffle(array) {
@@ -37,13 +38,11 @@ for (let i = 0; i<eachCard.length; i++) {
 
 // * set up the event listener for a card. If a card is clicked: */
 // *  - display the card's symbol (put this functionality in another function that you call from this one)
-function flipCardOver() {
-  $('.card').on("click", function(evt){
+$('.card').on("click", function flipCardOver(evt){
    $(evt.target).toggleClass('open show');
-  });
-}
+});
 
-flipCardOver();
+
 
 
 
@@ -67,16 +66,3 @@ flipCardOver();
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-
- // DISPLAY THE CARD SYMBOL
-// function flipCard() {
-//    for(const openCard of singleCard) {
-//      // console.log(openCard);
-//      let cardName = openCard.querySelector('fa');
-//      openCard.addEventListener('click', function(){
-//      openCard.setAttribute('class', 'card open show');
-//      });
-//    }
-// }
-//
-// flipCard();
