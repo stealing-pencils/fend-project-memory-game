@@ -47,7 +47,7 @@ $('.card').on("click", function flipCardOver(evt){
      numberOpenCards ++;
 
   } else if (numberOpenCards === 1) {
-    let cardOne = console.log($('.open').html());
+    let cardOne = $('.open').html();
     let cardTwo = $(evt.target).addClass('open show');
     cardTwo = ($(cardTwo).html());
     cardMatch(cardOne, cardTwo);
@@ -59,8 +59,15 @@ $('.card').on("click", function flipCardOver(evt){
 
 // *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
 function cardMatch(cardOne, cardTwo) {
-  console.log(cardOne);
-  console.log(cardTwo);
+  if (cardOne == cardTwo) {
+    console.log("whooppee");
+  } else {
+    console.log("nah");
+  };
+  // console.log(cardOne);
+  // console.log(cardTwo);
+
+  // alert($(cardOne).hasClass(cardTwo));
 };
 
 
