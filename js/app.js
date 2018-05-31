@@ -62,34 +62,15 @@ $('.card').on("click", function flipCardOver(evt){
 function cardMatch(cardOne, cardTwo) {
   if (cardOne === cardTwo) {
     console.log("whooppee");
-    let turnedCard = $('.open').addClass('match');
+    $('.open').addClass('match');
   } else {
     console.log("nah");
+    setTimeout(function turnCardDown(){
+      let faceDownCard = $('.open').removeClass('open show');
+    }, 1000);
 
-    // console.log(cardOne, cardTwo);
-  };
-  // console.log(cardOne);
-  // console.log(cardTwo);
-
-  // alert($(cardOne).hasClass(cardTwo));
+  }
 };
-
-
-
-
-
-
-/*
- // for (card of eachCard) {
- //  console.log(card);
- // 	deck.append($('<li class="card"><i class="'
- //    + eachCard + '"></i></li>'));
- // }
-
-
-
-
-
 /*
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
