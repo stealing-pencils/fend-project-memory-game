@@ -1,7 +1,6 @@
 /*
  * Create a list that holds all of your cards
  */
- let singleCard = $('.card');
  let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
  let deck = $('.deck');
  let numberOpenCards = 0;
@@ -68,7 +67,7 @@ function cardMatch(cardOne, cardTwo) {
   } else {
     console.log("nah");
     setTimeout(function turnCardDown(){
-      let faceDownCard = $('.open').removeClass('open show');
+      $('.open').removeClass('open show');
     }, 1500);
   }
 };
