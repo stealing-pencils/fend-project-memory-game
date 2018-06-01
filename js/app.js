@@ -39,15 +39,13 @@ turnCardOver();
 function turnCardOver() {
   $('.card').on("click", function (evt){
     if ($(this).hasClass('show')){
+      console.log("got to part 2")
       // *  - display the card's symbol (put this functionality in another function that you call from this one)
-      showCard(this);
-      console.log("got to turnCardOver part 2");
+      // showCard(this);
+      cardMatch(listOfCards);
       // let cardOne = $('.open').html();
       // listOfCards.push(this);
       // console.log(listOfCards);
-      cardMatch(listOfCards);
-
-
       } else {
         console.log("got to part 1");
         // let cardOne = $('.open').html();
@@ -55,8 +53,10 @@ function turnCardOver() {
         showCard(this);
         // listOfCards.push(this);
       }
+
   });
 }
+
 
 function showCard(evt) {
   $(evt).addClass('open show');
@@ -66,7 +66,7 @@ function showCard(evt) {
 
 function addCardToList(card) {
   listOfCards.push(card);
-  console.log('got here too');
+  console.log('got to addCardList');
   turnCardOver();
 }
 // function cardCollection(card) {
@@ -81,16 +81,18 @@ function addCardToList(card) {
 // *  - if the list already has another card, check to see if the two cards match
 
 function cardMatch(listOfCards) {
-  if (listOfCards.length > 2) {
-    console.log("whooppee");
-    $('.open').addClass('match');
-  } else {
-    console.log("nah");
-    setTimeout(function turnCardDown(){
-      $('.open').removeClass('open show');
-    }, 1500);
+  console.log('got to cardMatch');
+  console.log(listOfCards[0], listOfCards[1], listOfCards[2]);
+  // if (listOfCards.length > 2) {
+  //   console.log("whooppee");
+  //   $('.open').addClass('match');
+  // } else {
+  //   console.log("nah");
+  //   setTimeout(function turnCardDown(){
+  //     $('.open').removeClass('open show');
+  //   }, 1500);
   }
-};
+// };
 
 
 /*
