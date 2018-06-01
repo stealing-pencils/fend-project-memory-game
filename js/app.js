@@ -5,7 +5,7 @@
  let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
  let deck = $('.deck');
  let numberOpenCards = 0;
-
+ let numberOfLives = 0;
  // Shuffle function from http://stackoverflow.com/a/2450976
  function shuffle(array) {
      var currentIndex = array.length, temporaryValue, randomIndex;
@@ -39,22 +39,25 @@ for (let i = 0; i<eachCard.length; i++) {
 // *  - display the card's symbol (put this functionality in another function that you call from this one)
 
 
-
-$('.card').on("click", function flipCardOver(evt){
-   if (numberOpenCards === 0) {
-     $(evt.target).addClass('open show');
-     numberOpenCards ++;
-
-  } else if (numberOpenCards === 1) {
-    let cardOne = $('.open').html();
-    let cardTwo = $(evt.target).addClass('open show');
-    cardTwo = ($(cardTwo).html());
-    // let turnedCard = $('.open').addClass('match');
-    cardMatch(cardOne, cardTwo);
-    numberOpenCards ++
-  }
-
+$('.card').on("click", function (evt){
+  cardSpin(evt)
 });
+
+function cardSpin(evt){
+     if (numberOpenCards === 0) {
+       $(evt.target).addClass('open show');
+       numberOpenCards ++;
+
+    } else {
+      let cardOne = $('.open').html();
+      let cardTwo = $(evt.target).addClass('open show');
+      cardTwo = ($(cardTwo).html());
+      // let turnedCard = $('.open').addClass('match');
+      cardMatch(cardOne, cardTwo);
+      numberOpenCards ++
+    }
+}
+
    // *  - if the list already has another card, check to see if the two cards match
 
 // *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
@@ -66,10 +69,11 @@ function cardMatch(cardOne, cardTwo) {
     console.log("nah");
     setTimeout(function turnCardDown(){
       let faceDownCard = $('.open').removeClass('open show');
-    }, 1000);
-
+    }, 1500);
   }
 };
+
+
 /*
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
