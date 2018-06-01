@@ -3,8 +3,8 @@
  */
  let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
  let deck = $('.deck');
- let numberOpenCards = 0;
  let numberOfLives = 0;
+ let listOfCards = [];
  // Shuffle function from http://stackoverflow.com/a/2450976
  function shuffle(array) {
      var currentIndex = array.length, temporaryValue, randomIndex;
@@ -35,26 +35,29 @@ for (let i = 0; i<eachCard.length; i++) {
 }
 
 // * set up the event listener for a card. If a card is clicked: */
-// *  - display the card's symbol (put this functionality in another function that you call from this one)
-
-
 $('.card').on("click", function (evt){
   if ($(this).hasClass('show')){
+    // *  - display the card's symbol (put this functionality in another function that you call from this one)
     showCard(this);
+    // let cardOne = $('.open').html();
+    listOfCards.push(this);
+
     } else {
-      let cardOne = $('.open').html();
-      let cardTwo = $(evt.target).addClass('open show');
-      cardTwo = ($(cardTwo).html());
-      // let turnedCard = $('.open').addClass('match');
-      cardMatch(cardOne, cardTwo);
+
+      // let cardOne = $('.open').html();
+      // let cardTwo = $(this).addClass('open show').html();
+      showCard(this);
+      listOfCards.push(this);
+      cardMatch(listOfCards);
     }
 });
 
-   // *  - if the list already has another card, check to see if the two cards match
 
 // *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
-function cardMatch(cardOne, cardTwo) {
-  if (cardOne === cardTwo) {
+// *  - if the list already has another card, check to see if the two cards match
+
+function cardMatch(listOfCards) {
+  if (listOfCards.length > 2) {
     console.log("whooppee");
     $('.open').addClass('match');
   } else {
