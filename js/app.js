@@ -39,13 +39,9 @@ for (let i = 0; i<eachCard.length; i++) {
 
 
 $('.card').on("click", function (evt){
-  cardSpin(evt)
-});
-
-function cardSpin(evt){
-     if (numberOpenCards === 0) {
+       if ($(evt).hasClass('show')){
+     // if (numberOpenCards === 0) {
        $(evt.target).addClass('open show');
-       numberOpenCards ++;
 
     } else {
       let cardOne = $('.open').html();
@@ -53,9 +49,8 @@ function cardSpin(evt){
       cardTwo = ($(cardTwo).html());
       // let turnedCard = $('.open').addClass('match');
       cardMatch(cardOne, cardTwo);
-      numberOpenCards ++
     }
-}
+});
 
    // *  - if the list already has another card, check to see if the two cards match
 
