@@ -34,24 +34,48 @@ for (let i = 0; i<eachCard.length; i++) {
  deck.append($('<li class="card"><i class="' + eachCard[i] + '"></i></li>'));
 }
 
+turnCardOver();
 // * set up the event listener for a card. If a card is clicked: */
-$('.card').on("click", function (evt){
-  if ($(this).hasClass('show')){
-    // *  - display the card's symbol (put this functionality in another function that you call from this one)
-    showCard(this);
-    // let cardOne = $('.open').html();
-    listOfCards.push(this);
-
-    } else {
-
-      // let cardOne = $('.open').html();
-      // let cardTwo = $(this).addClass('open show').html();
+function turnCardOver() {
+  $('.card').on("click", function (evt){
+    if ($(this).hasClass('show')){
+      // *  - display the card's symbol (put this functionality in another function that you call from this one)
       showCard(this);
-      listOfCards.push(this);
+      console.log("got to turnCardOver part 2");
+      // let cardOne = $('.open').html();
+      // listOfCards.push(this);
+      // console.log(listOfCards);
       cardMatch(listOfCards);
-    }
-});
 
+
+      } else {
+        console.log("got to part 1");
+        // let cardOne = $('.open').html();
+        // let cardTwo = $(this).addClass('open show').html();
+        showCard(this);
+        // listOfCards.push(this);
+      }
+  });
+}
+
+function showCard(evt) {
+  $(evt).addClass('open show');
+  console.log("got to showCard");
+  addCardToList(evt);
+}
+
+function addCardToList(card) {
+  listOfCards.push(card);
+  console.log('got here too');
+  turnCardOver();
+}
+// function cardCollection(card) {
+//   listOfCards.push(card);
+//   if (listOfCards.length === 2 ) {
+//     console.log("got to cardCollection");
+//     cardMatch(listOfCards);
+//   }
+// }
 
 // *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
 // *  - if the list already has another card, check to see if the two cards match
@@ -68,9 +92,7 @@ function cardMatch(listOfCards) {
   }
 };
 
-function showCard(evt) {
-  $(evt).addClass('open show');
-}
+
 /*
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
