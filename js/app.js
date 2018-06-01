@@ -39,10 +39,8 @@ for (let i = 0; i<eachCard.length; i++) {
 
 
 $('.card').on("click", function (evt){
-       if ($(evt).hasClass('show')){
-     // if (numberOpenCards === 0) {
-       $(evt.target).addClass('open show');
-
+  if ($(this).hasClass('show')){
+    showCard(this);
     } else {
       let cardOne = $('.open').html();
       let cardTwo = $(evt.target).addClass('open show');
@@ -67,7 +65,9 @@ function cardMatch(cardOne, cardTwo) {
   }
 };
 
-
+function showCard(evt) {
+  $(evt).addClass('open show');
+}
 /*
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
