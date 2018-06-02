@@ -5,6 +5,7 @@
  let deck = $('.deck');
  let numberOfLives = 0;
  let listOfCards = [];
+ let lockCardsOpen = [];
  // Shuffle function from http://stackoverflow.com/a/2450976
  function shuffle(array) {
      var currentIndex = array.length, temporaryValue, randomIndex;
@@ -88,7 +89,8 @@ function cardMatch(listOfCards) {
   console.log(cardOne, cardTwo);
   if (cardOne === cardTwo) {
     console.log("it worked");
-    $('.open').addClass('match');
+    $(listOfCards[0]).addClass('match');
+    $(listOfCards[1]).addClass('match');
     keepCardsOpen(cardOne, cardTwo);
   } else {
     console.log("it didn't work");
@@ -96,8 +98,10 @@ function cardMatch(listOfCards) {
 
   function keepCardsOpen (cardOne, cardTwo) {
     console.log("got to keepCardsOpen function");
-
+    lockCardOpen = lockCardsOpen.push(cardOne, cardTwo);
     console.log(cardOne, cardTwo);
+    console.log(lockCardsOpen);
+    turnCardOver();
   }
   // if (listOfCards.length > 2) {
   //   console.log("whooppee");
