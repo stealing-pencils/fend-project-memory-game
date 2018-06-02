@@ -82,7 +82,15 @@ function addCardToList(card) {
 
 function cardMatch(listOfCards) {
   console.log('got to cardMatch');
-  console.log(listOfCards[0], listOfCards[1], listOfCards[2]);
+  // $('.open').html();
+  let cardOne = $(listOfCards[0]).html();
+  let cardTwo = $(listOfCards[1]).html();
+  console.log(cardOne, cardTwo);
+  if (cardOne === cardTwo) {
+    console.log("it worked");
+  } else {
+    console.log("it didn't work");
+  }
   // if (listOfCards.length > 2) {
   //   console.log("whooppee");
   //   $('.open').addClass('match');
