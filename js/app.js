@@ -88,8 +88,16 @@ function cardMatch(listOfCards) {
   console.log(cardOne, cardTwo);
   if (cardOne === cardTwo) {
     console.log("it worked");
+    $('.open').addClass('match');
+    keepCardsOpen(cardOne, cardTwo);
   } else {
     console.log("it didn't work");
+  }
+
+  function keepCardsOpen (cardOne, cardTwo) {
+    console.log("got to keepCardsOpen function");
+
+    console.log(cardOne, cardTwo);
   }
   // if (listOfCards.length > 2) {
   //   console.log("whooppee");
