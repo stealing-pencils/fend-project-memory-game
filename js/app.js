@@ -102,8 +102,8 @@ function cardMatch(listOfCards) {
     console.log("got to keepCardsOpen function");
     lockCardsOpen.push(cardOne, cardTwo);
     console.log("These are locked cards: " + lockCardsOpen);
-    listOfCards = listOfCards.pop();
-    console.log("here is listOfCards after pop" + listOfCards);
+    listOfCards.length = 0;
+    console.log("here is listOfCards after reset" + listOfCards);
     // console.log(cardOne, cardTwo);
   }
   // if (listOfCards.length > 2) {
@@ -121,7 +121,6 @@ function allFaceDown(listOfCards) {
     $('.open').removeClass('show open');
   }, 1500);
   console.log(listOfCards);
-  // listOfCards.length = 0;
 }
 // };
 
