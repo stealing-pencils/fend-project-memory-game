@@ -93,6 +93,8 @@ function cardMatch(listOfCards) {
     keepCardsOpen(cardOne, cardTwo);
   } else {
     // $('.open').removeClass('open show');
+    console.log('it didnt work');
+    listOfCards.length = 0;
     allFaceDown(listOfCards);
   }
 
@@ -103,7 +105,6 @@ function cardMatch(listOfCards) {
     listOfCards = listOfCards.pop();
     console.log("here is listOfCards after pop" + listOfCards);
     // console.log(cardOne, cardTwo);
-    // console.log(lockCardsOpen);
   }
   // if (listOfCards.length > 2) {
   //   console.log("whooppee");
@@ -117,11 +118,14 @@ function cardMatch(listOfCards) {
 
 function allFaceDown(listOfCards) {
   setTimeout(function(){
-    $(listOfCards).removeClass('show open');
+    $('.open').removeClass('show open');
   }, 1500);
   console.log(listOfCards);
+  // listOfCards.length = 0;
 }
 // };
+
+
 
 
 /*
