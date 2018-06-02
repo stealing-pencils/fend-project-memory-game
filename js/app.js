@@ -39,14 +39,14 @@ turnCardOver();
 // * set up the event listener for a card. If a card is clicked: */
 function turnCardOver() {
   $('.card').on("click", function (evt){
-    if ($(this).hasClass('show')){
+    console.log(listOfCards);
+    if ($(listOfCards).hasClass('show')){
+    // if ($(this).hasClass('show')){
       console.log("got to part 2")
       // *  - display the card's symbol (put this functionality in another function that you call from this one)
-      // showCard(this);
+      showCard(this);
       cardMatch(listOfCards);
-      // let cardOne = $('.open').html();
-      // listOfCards.push(this);
-      // console.log(listOfCards);
+
       } else {
         console.log("got to part 1");
         // let cardOne = $('.open').html();
@@ -68,7 +68,7 @@ function showCard(evt) {
 function addCardToList(card) {
   listOfCards.push(card);
   console.log('got to addCardList');
-  turnCardOver();
+  // turnCardOver();
 }
 // function cardCollection(card) {
 //   listOfCards.push(card);
@@ -89,19 +89,21 @@ function cardMatch(listOfCards) {
   console.log(cardOne, cardTwo);
   if (cardOne === cardTwo) {
     console.log("it worked");
-    $(listOfCards[0]).addClass('match');
-    $(listOfCards[1]).addClass('match');
+    $('.open').addClass('match');
     keepCardsOpen(cardOne, cardTwo);
   } else {
-    console.log("it didn't work");
+    // $('.open').removeClass('open show');
+    allFaceDown(listOfCards);
   }
 
   function keepCardsOpen (cardOne, cardTwo) {
     console.log("got to keepCardsOpen function");
-    lockCardOpen = lockCardsOpen.push(cardOne, cardTwo);
-    console.log(cardOne, cardTwo);
-    console.log(lockCardsOpen);
-    turnCardOver();
+    lockCardsOpen.push(cardOne, cardTwo);
+    console.log("These are locked cards: " + lockCardsOpen);
+    listOfCards = listOfCards.pop();
+    console.log("here is listOfCards after pop" + listOfCards);
+    // console.log(cardOne, cardTwo);
+    // console.log(lockCardsOpen);
   }
   // if (listOfCards.length > 2) {
   //   console.log("whooppee");
@@ -112,6 +114,13 @@ function cardMatch(listOfCards) {
   //     $('.open').removeClass('open show');
   //   }, 1500);
   }
+
+function allFaceDown(listOfCards) {
+  setTimeout(function(){
+    $(listOfCards).removeClass('show open');
+  }, 1500);
+  console.log(listOfCards);
+}
 // };
 
 
