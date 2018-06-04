@@ -3,6 +3,7 @@
  */
  let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
  let numberOfLives = 5;
+ let cardMatchCounter = 0;
  let listOfCards = [];
  let lockCardsOpen = [];
  let star = $('.score-panel ul li');
@@ -73,6 +74,7 @@ function addCardToList(card) {
 // *  - if the list already has another card, check to see if the two cards match
 function cardMatch(listOfCards) {
   console.log('got to cardMatch');
+  console.log(listOfCards + "this is the html version");
   let cardOne = $(listOfCards[0]).html();
   let cardTwo = $(listOfCards[1]).html();
   console.log(cardOne, cardTwo);
@@ -80,6 +82,7 @@ function cardMatch(listOfCards) {
     console.log("it worked");
     $('.open').addClass('match');
     keepCardsOpen(cardOne, cardTwo);
+
   } else {
     console.log('it didnt work');
     numberOfLives --;
@@ -91,10 +94,11 @@ function cardMatch(listOfCards) {
   function keepCardsOpen (cardOne, cardTwo) {
     console.log("got to keepCardsOpen function");
     lockCardsOpen.push(cardOne, cardTwo);
-    console.log("These are locked cards: " + lockCardsOpen);
-    listOfCards.length = 0;
-    console.log("here is listOfCards after reset" + listOfCards);
+    cardMatchCounter ++;
+    gameFinishCheck(cardMatchCounter);
   }
+
+
 
   // *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
 function allFaceDown() {
@@ -111,9 +115,18 @@ function moveCounter(numberOfLives){
   star[numberOfLives].remove();
 }
 /*
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+ function gameFinishCheck(cardMatchCounter) {
+   if (cardMatchCounter < 8) {
+     console.log("These are locked cards: " + lockCardsOpen);
+     listOfCards.length = 0;
+     console.log("here is listOfCards after reset" + listOfCards);
+   } else {
+     alert("CONGRATULATIONS WINNER: You had " + numberOfLives + "lives remaining");
+   }
+ };
+
  //  reloads game
  reload.on("click", function(evt) {
    location.reload();
