@@ -48,10 +48,14 @@ function turnCardOver() {
       showCard(this);
       cardMatch(listOfCards);
 
-      } else {
+    } else {
+        if (numberOfLives === 0) {
+          alert("you lost");
+        } else {
         console.log("got to part 1");
         showCard(this);
       }
+    }
 
   });
 }
@@ -110,9 +114,7 @@ function allFaceDown() {
 }
 
 function moveCounter(numberOfLives){
-  if (numberOfLives <= 3) {
-    star[numberOfLives].remove();
-   }
+  star[numberOfLives].remove();
 }
 /*
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
