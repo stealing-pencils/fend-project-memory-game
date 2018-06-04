@@ -113,9 +113,6 @@ function moveCounter(numberOfLives){
   if (numberOfLives <= 3) {
     star[numberOfLives].remove();
    }
-    // $('.open').removeClass('show open');
-    console.log(numberOfLives);
-    // $('.li').removeClass('fa fa-star');
 }
 /*
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
