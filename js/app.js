@@ -35,19 +35,23 @@ for (let i = 0; i<eachCard.length; i++) {
  $('.deck').append($('<li class="card"><i class="' + eachCard[i] + '"></i></li>'));
 }
 
-// $('.card').off("click");
+
 
 turnCardOver();
 // * set up the event listener for a card. If a card is clicked: */
 function turnCardOver() {
   $('.card').on("click", function (evt){
-    console.log(listOfCards);
     if ($(listOfCards).hasClass('show')){
-      console.log("got to part 2");
-      // *  - display the card's symbol (put this functionality in another function that you call from this one)
-      showCard(this);
-      cardMatch(listOfCards);
-
+      if (listOfCards.length >= 2) {
+        console.log(listOfCards.length);
+        console.log("here we are at this bit");
+        allFaceDown();
+      } else {
+        console.log("got to part 2");
+        // *  - display the card's symbol (put this functionality in another function that you call from this one)
+        showCard(this);
+        cardMatch(listOfCards);
+      }
     } else {
         if (numberOfLives === 0) {
           alert("Game Over");
@@ -106,11 +110,16 @@ function cardMatch(listOfCards) {
 
   // *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
 function allFaceDown() {
+  console.log('got to allFaceDown');
   setTimeout(function(){
     $('.open').removeClass('show open');
+    listOfCards.length = 0;
   }, 1500);
   moveCounter(numberOfLives);
-  listOfCards.length = 0;
+
+
+  // ('.card').on("click");
+  // listOfCards.length = 0;
 }
 
 function moveCounter(numberOfLives){
@@ -120,7 +129,7 @@ function moveCounter(numberOfLives){
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
- //  reload function
+ //  reloads game
  reload.on("click", function(evt) {
    location.reload();
  })
