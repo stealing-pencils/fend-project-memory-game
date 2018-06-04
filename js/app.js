@@ -37,7 +37,7 @@ for (let i = 0; i<eachCard.length; i++) {
 
 
 
-turnCardOver();
+
 // * set up the event listener for a card. If a card is clicked: */
 function turnCardOver() {
   $('.card').on("click", function (evt){
@@ -45,7 +45,7 @@ function turnCardOver() {
       if (listOfCards.length >= 2) {
         console.log(listOfCards.length);
         console.log("here we are at this bit");
-        allFaceDown();
+        // allFaceDown();
       } else {
         console.log("got to part 2");
         // *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -79,6 +79,7 @@ function showCard(evt) {
 // add open card to the list of open cards
 function addCardToList(card) {
   console.log('got to addCardList');
+  console.log(listOfCards.length);
   listOfCards.push(card);
 }
 
@@ -133,3 +134,5 @@ function moveCounter(numberOfLives){
  reload.on("click", function(evt) {
    location.reload();
  })
+
+ turnCardOver();
