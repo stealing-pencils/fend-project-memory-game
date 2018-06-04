@@ -2,7 +2,7 @@
  * Create a list that holds all of your cards
  */
  let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
- let numberOfLives = 3;
+ let numberOfLives = 5;
  let listOfCards = [];
  let lockCardsOpen = [];
  let star = $('.score-panel ul li');
@@ -24,9 +24,6 @@
  }
 
  eachCard = shuffle(eachCard);
-/*
-
- */
 
 //* Display the cards on the page
 // *   - loop through each card and create its HTML
@@ -35,9 +32,6 @@ for (let i = 0; i<eachCard.length; i++) {
  $('.deck').append($('<li class="card"><i class="' + eachCard[i] + '"></i></li>'));
 }
 
-
-
-
 // * set up the event listener for a card. If a card is clicked: */
 function turnCardOver() {
   $('.card').on("click", function (evt){
@@ -45,7 +39,6 @@ function turnCardOver() {
       if (listOfCards.length >= 2) {
         console.log(listOfCards.length);
         console.log("here we are at this bit");
-        // allFaceDown();
       } else {
         console.log("got to part 2");
         // *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -60,22 +53,16 @@ function turnCardOver() {
         showCard(this);
       }
     }
-
   });
 }
 
 // *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
 function showCard(evt) {
-  // if (listOfCards.length <= 1) {
   $(evt).addClass('open show');
   console.log("got to showCard");
   addCardToList(evt);
-
-
-  // } else {
-  //   $(".class").unbind("click");
-  // }
 }
+
 // add open card to the list of open cards
 function addCardToList(card) {
   console.log('got to addCardList');
@@ -117,12 +104,9 @@ function allFaceDown() {
     listOfCards.length = 0;
   }, 1500);
   moveCounter(numberOfLives);
-
-
-  // ('.card').on("click");
-  // listOfCards.length = 0;
 }
 
+// reduces number of stars / lives each time a pair of cards fails to match
 function moveCounter(numberOfLives){
   star[numberOfLives].remove();
 }
