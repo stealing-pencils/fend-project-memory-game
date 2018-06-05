@@ -2,16 +2,20 @@
  * Create a list that holds all of your cards
  */
  let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
- let numberOfMoves = 5;
+ let numberOfMoves = 0;
  let cardMatchCounter = 0;
  let listOfCards = [];
  let lockCardsOpen = [];
  let star = $('.score-panel ul li');
  let reload = $('.score-panel li');
  let minutes = $('.score-panel span').children();
+ let modalInner = document.getElementById("modalMessage");
 
 
 minutes.css('color', 'red');
+modalInner.textContent ="Congratulations!  You have finished the game in " +
+"minutes and " + " seconds with a star rating of " + " and in " + numberOfMoves +
+" number of moves.";
  // Shuffle function from http://stackoverflow.com/a/2450976
  function shuffle(array) {
      var currentIndex = array.length, temporaryValue, randomIndex;
@@ -52,13 +56,13 @@ function turnCardOver() {
     } else {
         console.log("got to part 1");
         showCard(this);
-      }
     }
   });
 }
 
 // *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
 function showCard(evt) {
+  numberOfMoves ++;
   $(evt).addClass('open show');
   console.log("got to showCard");
   addCardToList(evt);
@@ -85,8 +89,9 @@ function cardMatch(listOfCards) {
 
   } else {
     console.log('it didnt work');
-    numberOfLives --;
     allFaceDown();
+    // gameOverModal();
+    console.log("this is the number of moves that has been made" + numberOfMoves);
   }
 }
 
@@ -112,7 +117,17 @@ function allFaceDown() {
 
 // reduces number of stars / lives each time a pair of cards fails to match
 function moveCounter(numberOfMoves){
-  star[numberOfMoves].remove();
+  if (numberOfMoves === 8) {
+    star[4].remove();
+  } else if (numberOfMoves === 12) {
+    star[3].remove();
+  } else if (numberOfMoves === 18) {
+    star[2].remove();
+  } else if (numberOfMoves === 22) {
+    star[1].remove();
+  } else if (numberOfMoves > 28) {
+    star.text("0 Stars!");
+  }
 }
 /*
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
