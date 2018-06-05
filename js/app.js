@@ -6,6 +6,7 @@
  let cardMatchCounter = 0;
  let listOfCards = [];
  let lockCardsOpen = [];
+ let starRating = 5;
  let star = $('.score-panel ul li');
  let reload = $('.score-panel li');
  let minutes = $('.score-panel span').children();
@@ -14,8 +15,7 @@
 
 minutes.css('color', 'red');
 modalInner.textContent ="Congratulations!  You have finished the game in " +
-"minutes and " + " seconds with a star rating of " + " and in " + numberOfMoves +
-" number of moves.";
+"minutes and " + " seconds with a star rating of " + starRating;
  // Shuffle function from http://stackoverflow.com/a/2450976
  function shuffle(array) {
      var currentIndex = array.length, temporaryValue, randomIndex;
@@ -49,6 +49,7 @@ function turnCardOver() {
         console.log("here we are at this bit");
       } else {
         console.log("got to part 2");
+        console.log("this is the starRating" + starRating);
         // *  - display the card's symbol (put this functionality in another function that you call from this one)
         showCard(this);
         cardMatch(listOfCards);
@@ -118,16 +119,21 @@ function allFaceDown() {
 // reduces number of stars / lives each time a pair of cards fails to match
 function moveCounter(numberOfMoves){
   if (numberOfMoves === 8) {
-    star[4].remove();
+    removeStars();
   } else if (numberOfMoves === 12) {
-    star[3].remove();
+    removeStars();
   } else if (numberOfMoves === 18) {
-    star[2].remove();
+    removeStars();
   } else if (numberOfMoves === 22) {
-    star[1].remove();
+    removeStars();
   } else if (numberOfMoves > 28) {
     star.text("0 Stars!");
   }
+}
+
+function removeStars(){
+  starRating --;
+  star[starRating].remove();
 }
 /*
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
