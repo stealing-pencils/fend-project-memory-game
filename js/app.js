@@ -52,7 +52,7 @@ function turnCardOver() {
     } else {
         if (numberOfLives === 0) {
           stopTimer();
-          alert("Game Over");
+          gameOverModal();
         } else {
         console.log("got to part 1");
         showCard(this);
@@ -128,7 +128,7 @@ function moveCounter(numberOfLives){
      console.log("here is listOfCards after reset" + listOfCards);
    } else {
      stopTimer();
-     alert("CONGRATULATIONS WINNER: You had " + numberOfLives + " lives remaining");
+     gameOverModal();
    }
  };
 
@@ -150,19 +150,22 @@ function stopTimer() {
         clearInterval(timer);
 }
 
+// Get the modal
+let modal = document.getElementById('modalOnFinish');
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+
+// modal opens after user ends the game
+function gameOverModal() {
+    modal.style.display = "block";
+}
+
+// closes the modal on click of (x)
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+
+turnCardOver();
+
 startTimer();
-
-
-//
-// var counter = 0;
-// var timer = setInterval(function(){
-//   console.log(counter);
-//   counter++
-//   if (game ends) {
-//     console.log("HAPPY NEW YEAR!!");
-//     clearInterval(timer);
-//   }
-// }, 1000);
-
-
- turnCardOver();
