@@ -2,7 +2,7 @@
  * Create a list that holds all of your cards
  */
  let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
- let numberOfLives = 5;
+ let numberOfMoves = 5;
  let cardMatchCounter = 0;
  let listOfCards = [];
  let lockCardsOpen = [];
@@ -50,10 +50,6 @@ function turnCardOver() {
         cardMatch(listOfCards);
       }
     } else {
-        if (numberOfLives === 0) {
-          stopTimer();
-          gameOverModal();
-        } else {
         console.log("got to part 1");
         showCard(this);
       }
@@ -111,12 +107,12 @@ function allFaceDown() {
     $('.open').removeClass('show open');
     listOfCards.length = 0;
   }, 1500);
-  moveCounter(numberOfLives);
+  moveCounter(numberOfMoves);
 }
 
 // reduces number of stars / lives each time a pair of cards fails to match
-function moveCounter(numberOfLives){
-  star[numberOfLives].remove();
+function moveCounter(numberOfMoves){
+  star[numberOfMoves].remove();
 }
 /*
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
