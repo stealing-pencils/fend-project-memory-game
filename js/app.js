@@ -2,7 +2,7 @@
  * Create a list that holds all of your cards
  */
  let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
- let numberOfLives = 8;
+ let numberOfLives = 5;
  let cardMatchCounter = 0;
  let listOfCards = [];
  let lockCardsOpen = [];
@@ -146,11 +146,13 @@ function startTimer() {
      }, 1000);
 }
 
-startTimer();
-
 function stopTimer() {
         clearInterval(timer);
 }
+
+startTimer();
+
+
 //
 // var counter = 0;
 // var timer = setInterval(function(){
