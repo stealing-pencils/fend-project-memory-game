@@ -2,13 +2,16 @@
  * Create a list that holds all of your cards
  */
  let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
- let numberOfLives = 5;
+ let numberOfLives = 8;
  let cardMatchCounter = 0;
  let listOfCards = [];
  let lockCardsOpen = [];
  let star = $('.score-panel ul li');
  let reload = $('.score-panel li');
+ let minutes = $('.score-panel span').children();
 
+
+minutes.css('color', 'red');
  // Shuffle function from http://stackoverflow.com/a/2450976
  function shuffle(array) {
      var currentIndex = array.length, temporaryValue, randomIndex;
@@ -48,6 +51,7 @@ function turnCardOver() {
       }
     } else {
         if (numberOfLives === 0) {
+          stopTimer();
           alert("Game Over");
         } else {
         console.log("got to part 1");
@@ -123,7 +127,8 @@ function moveCounter(numberOfLives){
      listOfCards.length = 0;
      console.log("here is listOfCards after reset" + listOfCards);
    } else {
-     alert("CONGRATULATIONS WINNER: You had " + numberOfLives + "lives remaining");
+     stopTimer();
+     alert("CONGRATULATIONS WINNER: You had " + numberOfLives + " lives remaining");
    }
  };
 
@@ -131,5 +136,31 @@ function moveCounter(numberOfLives){
  reload.on("click", function(evt) {
    location.reload();
  })
+
+function startTimer() {
+     var seconds = 0;
+     timer = setInterval(function() {
+       seconds ++;
+       document.getElementById("seconds").innerText = seconds % 60;
+       document.getElementById("minutes").innerText = parseInt(seconds / 60);
+     }, 1000);
+}
+
+startTimer();
+
+function stopTimer() {
+        clearInterval(timer);
+}
+//
+// var counter = 0;
+// var timer = setInterval(function(){
+//   console.log(counter);
+//   counter++
+//   if (game ends) {
+//     console.log("HAPPY NEW YEAR!!");
+//     clearInterval(timer);
+//   }
+// }, 1000);
+
 
  turnCardOver();
