@@ -119,16 +119,16 @@ function allFaceDown() {
 
 function moveCounter(numberOfMisses){
   let starRating = 5;
-  if (numberOfMisses < 8) {
-  } else if (numberOfMisses === 8) {
+  if (numberOfMisses < 4) {
+  } else if (numberOfMisses === 4) {
     removeStars();
-  } else if (numberOfMisses === 12) {
+  } else if (numberOfMisses === 6) {
     removeStars();
-  } else if (numberOfMisses === 18) {
+  } else if (numberOfMisses === 9) {
     removeStars();
-  } else if (numberOfMisses === 22) {
+  } else if (numberOfMisses === 11) {
     removeStars();
-  } else if (numberOfMisses > 28) {
+  } else if (numberOfMisses > 14) {
     star.text("0 Stars!");
   }
 }
