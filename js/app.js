@@ -6,16 +6,15 @@
  let cardMatchCounter = 0;
  let listOfCards = [];
  let lockCardsOpen = [];
- let starRating = 5;
  let star = $('.score-panel ul li');
+ let starRating = star.length;
  let reload = $('.score-panel li');
  let minutes = $('.score-panel span').children();
  let modalInner = document.getElementById("modalMessage");
 
 
 minutes.css('color', 'red');
-modalInner.textContent ="Congratulations!  You have finished the game in " +
-"minutes and " + " seconds with a star rating of " + starRating;
+
  // Shuffle function from http://stackoverflow.com/a/2450976
  function shuffle(array) {
      var currentIndex = array.length, temporaryValue, randomIndex;
@@ -49,7 +48,6 @@ function turnCardOver() {
         console.log("here we are at this bit");
       } else {
         console.log("got to part 2");
-        console.log("this is the starRating" + starRating);
         // *  - display the card's symbol (put this functionality in another function that you call from this one)
         showCard(this);
         cardMatch(listOfCards);
@@ -114,11 +112,15 @@ function allFaceDown() {
     listOfCards.length = 0;
   }, 1500);
   moveCounter(numberOfMoves);
+  console.log("the star rating global is" + starRating);
 }
 
-// reduces number of stars / lives each time a pair of cards fails to match
+
+
 function moveCounter(numberOfMoves){
-  if (numberOfMoves === 8) {
+  let starRating = 5;
+  if (numberOfMoves < 8) {
+  } else if (numberOfMoves === 8) {
     removeStars();
   } else if (numberOfMoves === 12) {
     removeStars();
@@ -134,7 +136,11 @@ function moveCounter(numberOfMoves){
 function removeStars(){
   starRating --;
   star[starRating].remove();
+  console.log("the star rating is" + starRating);
 }
+
+
+
 /*
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
@@ -143,9 +149,10 @@ function removeStars(){
      console.log("These are locked cards: " + lockCardsOpen);
      listOfCards.length = 0;
      console.log("here is listOfCards after reset" + listOfCards);
+     console.log("HERE ARE THE BLOODY NUMBER OF STARS" + starRating);
    } else {
      stopTimer();
-     gameOverModal();
+     gameOverModal(starRating);
    }
  };
 
@@ -173,14 +180,17 @@ let modal = document.getElementById('modalOnFinish');
 let span = document.getElementsByClassName("close")[0];
 
 // modal opens after user ends the game
-function gameOverModal() {
+function gameOverModal(starRating) {
     modal.style.display = "block";
+    modalInner.textContent ="Congratulations!  You have finished the game in " +
+    "minutes and " + " seconds with a star rating of " + starRating;
 }
 
 // closes the modal on click of (x)
 span.onclick = function() {
     modal.style.display = "none";
 }
+
 
 
 turnCardOver();
