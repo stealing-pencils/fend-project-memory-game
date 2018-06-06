@@ -10,7 +10,10 @@
  let starRating = star.length;
  let reload = $('.score-panel li');
  let minutes = $('.score-panel span').children();
+ let finalMinutes;
+ let finalSeconds;
  let modalInner = document.getElementById("modalMessage");
+
 
 
 minutes.css('color', 'red');
@@ -40,7 +43,8 @@ for (let i = 0; i<eachCard.length; i++) {
 }
 
 // * set up the event listener for a card. If a card is clicked: */
-function turnCardOver() {
+function initGame() {
+  startTimer();
   $('.card').on("click", function (evt){
     if ($(listOfCards).hasClass('show')){
       if (listOfCards.length >= 2) {
@@ -139,8 +143,6 @@ function removeStars(){
   console.log("the star rating is" + starRating);
 }
 
-
-
 /*
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
@@ -150,9 +152,11 @@ function removeStars(){
      listOfCards.length = 0;
      console.log("here is listOfCards after reset" + listOfCards);
      console.log("HERE ARE THE BLOODY NUMBER OF STARS" + starRating);
-   } else {
+     gameOverModal(starRating)
      stopTimer();
+   } else {
      gameOverModal(starRating);
+     stopTimer();
    }
  };
 
@@ -182,8 +186,11 @@ let span = document.getElementsByClassName("close")[0];
 // modal opens after user ends the game
 function gameOverModal(starRating) {
     modal.style.display = "block";
+    finalSeconds = document.getElementById("seconds").innerText;
+    finalMinutes = document.getElementById("minutes").innerText;
     modalInner.textContent ="Congratulations!  You have finished the game in " +
-    "minutes and " + " seconds with a star rating of " + starRating;
+    finalMinutes + " minutes and " + finalSeconds +
+    " seconds and your star rating is:  " + starRating;
 }
 
 // closes the modal on click of (x)
@@ -193,6 +200,4 @@ span.onclick = function() {
 
 
 
-turnCardOver();
-
-startTimer();
+initGame();
