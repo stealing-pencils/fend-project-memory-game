@@ -8,7 +8,7 @@
  let lockCardsOpen = [];
  let star = $('.score-panel ul li');
  let starRating = star.length;
- let reload = $('.score-panel li');
+ let reloadIcon = $('.score-panel li');
  let minutes = $('.score-panel span').children();
  let finalMinutes;
  let finalSeconds;
@@ -17,6 +17,7 @@
 
 
 minutes.css('color', 'red');
+
 
  // Shuffle function from http://stackoverflow.com/a/2450976
  function shuffle(array) {
@@ -160,10 +161,13 @@ function removeStars(){
    }
  };
 
- //  reloads game
- reload.on("click", function(evt) {
-   location.reload();
- })
+
+ //  reloadIcons game
+   reloadIcon.on("click", function reloadGame(evt) {
+     location.reload();
+   })
+
+
 
 function startTimer() {
      var seconds = 0;
@@ -182,7 +186,6 @@ function stopTimer() {
 let modal = document.getElementById('modalOnFinish');
 // Get the <span> element that closes the modal
 let span = document.getElementsByClassName("close")[0];
-
 // modal opens after user ends the game
 function gameOverModal(starRating) {
     modal.style.display = "block";
@@ -198,6 +201,9 @@ span.onclick = function() {
     modal.style.display = "none";
 }
 
+function buttonFunction() {
+  location.reload();
+}
 
 
 initGame();
