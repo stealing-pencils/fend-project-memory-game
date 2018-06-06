@@ -2,7 +2,7 @@
  * Create a list that holds all of your cards
  */
  let eachCard = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
- let numberOfMoves = 0;
+ let numberOfMisses = 0;
  let cardMatchCounter = 0;
  let listOfCards = [];
  let lockCardsOpen = [];
@@ -61,7 +61,6 @@ function turnCardOver() {
 
 // *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
 function showCard(evt) {
-  numberOfMoves ++;
   $(evt).addClass('open show');
   console.log("got to showCard");
   addCardToList(evt);
@@ -88,9 +87,10 @@ function cardMatch(listOfCards) {
 
   } else {
     console.log('it didnt work');
+    numberOfMisses ++;
     allFaceDown();
     // gameOverModal();
-    console.log("this is the number of moves that has been made" + numberOfMoves);
+    console.log("this is the number of moves that has been made" + numberOfMisses);
   }
 }
 
@@ -111,24 +111,24 @@ function allFaceDown() {
     $('.open').removeClass('show open');
     listOfCards.length = 0;
   }, 1500);
-  moveCounter(numberOfMoves);
+  moveCounter(numberOfMisses);
   console.log("the star rating global is" + starRating);
 }
 
 
 
-function moveCounter(numberOfMoves){
+function moveCounter(numberOfMisses){
   let starRating = 5;
-  if (numberOfMoves < 8) {
-  } else if (numberOfMoves === 8) {
+  if (numberOfMisses < 8) {
+  } else if (numberOfMisses === 8) {
     removeStars();
-  } else if (numberOfMoves === 12) {
+  } else if (numberOfMisses === 12) {
     removeStars();
-  } else if (numberOfMoves === 18) {
+  } else if (numberOfMisses === 18) {
     removeStars();
-  } else if (numberOfMoves === 22) {
+  } else if (numberOfMisses === 22) {
     removeStars();
-  } else if (numberOfMoves > 28) {
+  } else if (numberOfMisses > 28) {
     star.text("0 Stars!");
   }
 }
