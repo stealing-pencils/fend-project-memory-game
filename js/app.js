@@ -153,8 +153,6 @@ function removeStars(){
      listOfCards.length = 0;
      console.log("here is listOfCards after reset" + listOfCards);
      console.log("HERE ARE THE BLOODY NUMBER OF STARS" + starRating);
-     gameOverModal(starRating)
-     stopTimer();
    } else {
      gameOverModal(starRating);
      stopTimer();
