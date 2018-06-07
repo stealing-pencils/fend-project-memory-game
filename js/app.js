@@ -10,8 +10,6 @@
  let starRating = star.length;
  let reloadIcon = $('.score-panel li');
  let minutes = $('.score-panel span').children();
- let finalMinutes;
- let finalSeconds;
  let modalInner = document.getElementById("modalMessage");
 
 
@@ -49,16 +47,12 @@ function initGame() {
   $('.card').on("click", function (evt){
     if ($(listOfCards).hasClass('show')){
       if (listOfCards.length >= 2) {
-        console.log(listOfCards.length);
-        console.log("here we are at this bit");
       } else {
-        console.log("got to part 2");
         // *  - display the card's symbol (put this functionality in another function that you call from this one)
         showCard(this);
         cardMatch(listOfCards);
       }
     } else {
-        console.log("got to part 1");
         showCard(this);
     }
   });
@@ -67,41 +61,30 @@ function initGame() {
 // *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
 function showCard(evt) {
   $(evt).addClass('open show');
-  console.log("got to showCard");
   addCardToList(evt);
 }
 
 // add open card to the list of open cards
 function addCardToList(card) {
-  console.log('got to addCardList');
-  console.log(listOfCards.length);
   listOfCards.push(card);
 }
 
 // *  - if the list already has another card, check to see if the two cards match
 function cardMatch(listOfCards) {
-  console.log('got to cardMatch');
-  console.log(listOfCards + "this is the html version");
   let cardOne = $(listOfCards[0]).html();
   let cardTwo = $(listOfCards[1]).html();
-  console.log(cardOne, cardTwo);
   if (cardOne === cardTwo) {
-    console.log("it worked");
     $('.open').addClass('match');
     keepCardsOpen(cardOne, cardTwo);
 
   } else {
-    console.log('it didnt work');
     numberOfMisses ++;
     allFaceDown();
-    // gameOverModal();
-    console.log("this is the number of moves that has been made" + numberOfMisses);
   }
 }
 
 // *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
   function keepCardsOpen (cardOne, cardTwo) {
-    console.log("got to keepCardsOpen function");
     lockCardsOpen.push(cardOne, cardTwo);
     cardMatchCounter ++;
     gameFinishCheck(cardMatchCounter);
@@ -111,13 +94,11 @@ function cardMatch(listOfCards) {
 
   // *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
 function allFaceDown() {
-  console.log('got to allFaceDown');
   setTimeout(function(){
     $('.open').removeClass('show open');
     listOfCards.length = 0;
   }, 1500);
   moveCounter(numberOfMisses);
-  console.log("the star rating global is" + starRating);
 }
 
 
@@ -141,7 +122,6 @@ function moveCounter(numberOfMisses){
 function removeStars(){
   starRating --;
   star[starRating].remove();
-  console.log("the star rating is" + starRating);
 }
 
 /*
@@ -149,10 +129,7 @@ function removeStars(){
  */
  function gameFinishCheck(cardMatchCounter) {
    if (cardMatchCounter < 8) {
-     console.log("These are locked cards: " + lockCardsOpen);
      listOfCards.length = 0;
-     console.log("here is listOfCards after reset" + listOfCards);
-     console.log("HERE ARE THE BLOODY NUMBER OF STARS" + starRating);
    } else {
      gameOverModal(starRating);
      stopTimer();
@@ -187,8 +164,8 @@ let span = document.getElementsByClassName("close")[0];
 // modal opens after user ends the game
 function gameOverModal(starRating) {
     modal.style.display = "block";
-    finalSeconds = document.getElementById("seconds").innerText;
-    finalMinutes = document.getElementById("minutes").innerText;
+    let finalSeconds = document.getElementById("seconds").innerText;
+    let finalMinutes = document.getElementById("minutes").innerText;
     modalInner.textContent ="Congratulations!  You have finished the game in " +
     finalMinutes + " minutes and " + finalSeconds +
     " seconds and your star rating is:  " + starRating;
