@@ -49,21 +49,25 @@ for (let i = 0; i < eachCard.length; i++) {
  eachCard[i] + '"></i></li>'));
 }
 
+
 /** set up the event listener for a card. If a card is clicked: */
 function initGame() {
   startTimer();
   $(".card").on("click", function (evt){
     // asks if there is already one upturned card
-    if ($(listOfCards).hasClass("show")){
-        showCard(this);
-        // check that cards match
-        cardMatch(listOfCards);
-    } else {
-        // *  - display the card's symbol (put this functionality in
-        // another function that you call from this one)
-        showCard(this);
-    }
+    const hasClassShow = ($(listOfCards).hasClass("show"));
+    hasClassShow ? (showCard(this), cardMatch(listOfCards)) : showCard(this);
   });
+  //   if ($(listOfCards).hasClass("show")){
+  //       showCard(this);
+  //       // check that cards match
+  //       cardMatch(listOfCards);
+  //   } else {
+  //       // *  - display the card's symbol (put this functionality in
+  //       // * another function that you call from this one)
+  //       showCard(this);
+  //   }
+  // });
 }
 
 /** displays card */
