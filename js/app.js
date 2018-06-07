@@ -1,6 +1,4 @@
-/*
- * Create a list that holds all of your cards
- */
+/** Create a list that holds all of your cards */
  let eachCard = ["fa fa-diamond", "fa fa-paper-plane-o",
                  "fa fa-anchor", "fa fa-bolt",
                  "fa fa-cube", "fa fa-anchor",
@@ -26,7 +24,7 @@
 minutes.css("color", "red");
 
 
-  // Shuffle function from http://stackoverflow.com/a/2450976
+/** Shuffle function from http://stackoverflow.com/a/2450976 */
  function shuffle(array) {
      let currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -43,48 +41,46 @@ minutes.css("color", "red");
 
  eachCard = shuffle(eachCard);
 
-  //* Display the cards on the page
-  // *   - loop through each card and create its HTML
-  // *   - add each card's HTML to the page
+/** Display the cards on the page
+* loop through each card and create its HTML
+*  add each card's HTML to the page */
 for (let i = 0; i < eachCard.length; i++) {
  $(".deck").append($('<li class="card"><i class="' +
  eachCard[i] + '"></i></li>'));
 }
 
-  // * set up the event listener for a card. If a card is clicked: */
+/** set up the event listener for a card. If a card is clicked: */
 function initGame() {
   startTimer();
   $(".card").on("click", function (evt){
     // asks if there is already one upturned card
     if ($(listOfCards).hasClass("show")){
-      if (listOfCards.length >= 2) {
-      } else {
-        // *  - display the card's symbol (put this functionality in
-        // another function that you call from this one)
         showCard(this);
         // check that cards match
         cardMatch(listOfCards);
-      }
     } else {
+        // *  - display the card's symbol (put this functionality in
+        // another function that you call from this one)
         showCard(this);
     }
   });
 }
-// displays card
+
+/** displays card */
 function showCard(evt) {
   $(evt).addClass("open show");
-  // *  - add the card to a *list* of "open" cards (put this functionality
-  // in another function that you call from this one)
+/**  - add the card to a *list* of "open" cards (put this functionality
+in another function that you call from this one) */
   addCardToList(evt);
 }
 
-// add open card to the list of open cards
+/** add open card to the list of open cards */
 function addCardToList(card) {
   listOfCards.push(card);
 }
 
-// *  - if the list already has another card, check to see if the two
-// cards match
+/**  - if the list already has another card, check to see if the two
+cards match */
 function cardMatch(listOfCards) {
   let cardOne = $(listOfCards[0]).html();
   let cardTwo = $(listOfCards[1]).html();
@@ -93,17 +89,17 @@ function cardMatch(listOfCards) {
     keepCardsOpen(cardOne, cardTwo);
 
   } else {
-    // counts how many failed attempts have been made to match cards
+    /** counts how many failed attempts have been made to match cards */
     numberOfMisses ++;
-    // *  if the cards do not match, remove the cards from the list and hide
-    // *  the card's symbol (put this functionality in another function
-    // that you call from this one)
+    /**  if the cards do not match, remove the cards from the list and hide
+    *  the card's symbol (put this functionality in another function
+     that you call from this one) */
     allFaceDown();
   }
 }
 
-// *    + if the cards do match, lock the cards in the open position
-// (put this functionality in another function that you call from this one)
+/** if the cards do match, lock the cards in the open position
+*(put this functionality in another function that you call from this one) */
   function keepCardsOpen (cardOne, cardTwo) {
     lockCardsOpen.push(cardOne, cardTwo);
     cardMatchCounter ++;
@@ -136,16 +132,15 @@ function moveCounter(numberOfMisses){
   }
 }
 
-// removes stars from score panel
+/** removes stars from score panel */
 function removeStars(){
   starRating --;
   star[starRating].remove();
 }
 
-/*
- * /  if all cards have matched, display a message
-      with the final score (put this functionality in another
-      function that you call from this one) */
+/**  if all cards have matched, display a message
+* with the final score (put this functionality in another
+* function that you call from this one) */
  function gameFinishCheck(cardMatchCounter) {
    if (cardMatchCounter < 8) {
      listOfCards.length = 0;
@@ -156,13 +151,13 @@ function removeStars(){
  }
 
 
- //  reloadIcons game
-   reloadIcon.on("click", function reloadGame(evt) {
-     location.reload();
-   })
+/** reloadIcons game */
+reloadIcon.on("click", function reloadGame(evt) {
+ location.reload();
+})
 
 
-   // stars game timer
+/** stars game timer */
 function startTimer() {
      var seconds = 0;
      timer = setInterval(function() {
@@ -172,37 +167,37 @@ function startTimer() {
      }, 1000);
 }
 
-  // stops game timer
+/** stops game timer */
 function stopTimer() {
         clearInterval(timer);
 }
 
-  // *** MODAL ***
+// *** MODAL *** //
 
-  // Gets the modal
+/** Gets the modal */
 let modal = document.getElementById("modalOnFinish");
-  // Gets the close element for the modal
+/** Gets the close element for the modal */
 let span = document.getElementsByClassName("close")[0];
-  // modal opens after user ends the game
+/** modal opens after user ends the game */
 function gameOverModal(starRating) {
     modal.style.display = "block";
     finalSeconds = document.getElementById("seconds").innerText;
     finalMinutes = document.getElementById("minutes").innerText;
     // modal message
-    modalInner.textContent ="Congratulations!  You have finished the game in " +
-    finalMinutes + " minutes and " + finalSeconds +
-    " seconds and your star rating is:  " + starRating;
+    modalInner.textContent ='Congratulations!  You have finished the game in ' +
+    finalMinutes + ' minutes and ' + finalSeconds +
+    ' seconds and your star rating is:  ' + starRating;
 }
 
-  // closes the modal on click of (x)
+/** closes the modal on click of (x) */
 span.onclick = function() {
     modal.style.display = "none";
 }
 
-  //  reloads game on click of modal button
+/**  reloads game on click of modal button */
 function buttonFunction() {
   location.reload();
 }
 
-  // starts game
+/** starts game */
 initGame();
