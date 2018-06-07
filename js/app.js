@@ -143,13 +143,15 @@ function removeStars(){
 * with the final score (put this functionality in another
 * function that you call from this one) */
  function gameFinishCheck(cardMatchCounter) {
-   if (cardMatchCounter < 8) {
-     listOfCards.length = 0;
-   } else {
-     gameOverModal(starRating);
-     stopTimer();
-   }
+   cardMatchCounter < 8 ? listOfCards.length = 0 : (gameOverModal(starRating), stopTimer());
  }
+ //   if (cardMatchCounter < 8) {
+ //     listOfCards.length = 0;
+ //   } else {
+ //     gameOverModal(starRating);
+ //     stopTimer();
+ //   }
+ // }
 
 
 /** reloadIcons game */
