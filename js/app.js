@@ -53,29 +53,15 @@ for (let i = 0; i < eachCard.length; i++) {
 function initGame() {
   startTimer();
   $(".card").on("click", function (evt){
-    // asks if there is already one upturned card
+    /** asks if there is already one upturned card
+    * display the card's symbol
+    * (put this functionality in another function that you call from this one) */
     const hasClassShow = ($(listOfCards).hasClass("show"));
     const hasTwoCardsOrMore = (listOfCards.length >= 2);
     const stopTurn = console.log('cards stop turning on click');
-
     hasClassShow ? (hasTwoCardsOrMore ? stopTurn : (showCard(this), cardMatch(listOfCards))): showCard(this);
   });
 }
-//     if ($(listOfCards).hasClass("show")){
-//       if (listOfCards.length >= 2) {
-//         console.log('cards stop turning on click');
-//       } else {
-//         // *  - display the card's symbol (put this functionality in
-//         // another function that you call from this one)
-//         showCard(this);
-//         // check that cards match
-//         cardMatch(listOfCards);
-//       }
-//     } else {
-//         showCard(this);
-//     }
-//   });
-// }
 
 /** displays card */
 function showCard(evt) {
@@ -90,7 +76,7 @@ function addCardToList(card) {
   listOfCards.push(card);
 }
 
-/**  - if the list already has another card, check to see if the two
+/**  if the list already has another card, check to see if the two
 cards match */
 function cardMatch(listOfCards) {
   let cardOne = $(listOfCards[0]).html();
@@ -103,8 +89,8 @@ function cardMatch(listOfCards) {
     /** counts how many failed attempts have been made to match cards */
     numberOfMisses ++;
     /**  if the cards do not match, remove the cards from the list and hide
-    *  the card's symbol (put this functionality in another function
-     that you call from this one) */
+    * the card's symbol (put this functionality in another function
+    * that you call from this one) */
     allFaceDown();
   }
 }
@@ -130,6 +116,9 @@ function allFaceDown() {
 
 
 function moveCounter(numberOfMisses){
+
+  // numberOfMisses === 4 ? removeStars() : (numberOfMisses === 6 ? removeStars() : (numberOfMisses === 9 ? removeStars() : (numberOfMisses === 11 ? removeStars() : (numberOfMisses > 14 ? star.text("0 stars!"))));
+// }
   if (numberOfMisses === 4) {
     removeStars();
   } else if (numberOfMisses === 6) {
@@ -140,6 +129,7 @@ function moveCounter(numberOfMisses){
     removeStars();
   } else if (numberOfMisses > 14) {
     star.text("0 Stars!");
+    starRating = 0;
   }
 }
 
