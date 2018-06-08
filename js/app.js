@@ -10,7 +10,6 @@
  let numberOfMisses = 0;
  let cardMatchCounter = 0;
  let listOfCards = [];
- let lockCardsOpen = [];
  let star = $(".score-panel ul li");
  let starRating = star.length;
  let reloadIcon = $(".score-panel li");
@@ -19,6 +18,7 @@
  let timerSeconds = document.getElementById("seconds");
  let timerMinutes = document.getElementById("minutes");
  let numberOfMoves = document.getElementById("number_of_moves");
+
 
 /** Shuffle function from http://stackoverflow.com/a/2450976 */
  function shuffle(array) {
@@ -61,26 +61,32 @@ function initGame() {
 
 /** displays card */
 function showCard(evt) {
-  $(evt).addClass("open show");
-/**  - add the card to a *list* of "open" cards (put this functionality
-in another function that you call from this one) */
-  addCardToList(evt);
+  if ($(evt).hasClass("noDuplicate")) {
+    console.log("no cheating!");
+  } else {
+    $(evt).addClass("open show");
+    /**  - add the card to a *list* of "open" cards (put this functionality
+    in another function that you call from this one) */
+    addCardToList(evt);
+  }
 }
 
 /** add open card to the list of open cards */
 function addCardToList(card) {
-  listOfCards.push(card);
+  listOfCards.length === 0 ? ($(".open").addClass("noDuplicate"), listOfCards.push(card)) : listOfCards.push(card);
 }
+
 
 /**  if the list already has another card, check to see if the two
 cards match */
 function cardMatch(listOfCards) {
+  $(".open").removeClass("noDuplicate");
   let cardOne = $(listOfCards[0]).html();
   let cardTwo = $(listOfCards[1]).html();
   if (cardOne === cardTwo) {
     $(".open").addClass("match");
-    keepCardsOpen(cardOne, cardTwo);
-
+    cardMatchCounter ++;
+    gameFinishCheck(cardMatchCounter);
   } else {
     /** counts how many failed attempts have been made to match cards */
     numberOfMisses ++;
@@ -94,11 +100,7 @@ function cardMatch(listOfCards) {
 
 /** if the cards do match, lock the cards in the open position
 *(put this functionality in another function that you call from this one) */
-  function keepCardsOpen (cardOne, cardTwo) {
-    lockCardsOpen.push(cardOne, cardTwo);
-    cardMatchCounter ++;
-    gameFinishCheck(cardMatchCounter);
-  }
+
 
 
 
