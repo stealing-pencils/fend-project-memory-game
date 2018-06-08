@@ -19,11 +19,6 @@
  let timerSeconds = document.getElementById("seconds");
  let timerMinutes = document.getElementById("minutes");
 
-
-
-minutes.css("color", "red");
-
-
 /** Shuffle function from http://stackoverflow.com/a/2450976 */
  function shuffle(array) {
      let currentIndex = array.length, temporaryValue, randomIndex;
@@ -145,13 +140,7 @@ function removeStars(){
  function gameFinishCheck(cardMatchCounter) {
    cardMatchCounter < 8 ? listOfCards.length = 0 : (gameOverModal(starRating), stopTimer());
  }
- //   if (cardMatchCounter < 8) {
- //     listOfCards.length = 0;
- //   } else {
- //     gameOverModal(starRating);
- //     stopTimer();
- //   }
- // }
+
 
 
 /** reloadIcons game */
