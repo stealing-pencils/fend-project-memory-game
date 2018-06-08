@@ -116,17 +116,14 @@ function starCounter(numberOfMisses){
 
   // numberOfMisses === 4 ? removeStars() : (numberOfMisses === 6 ? removeStars() : (numberOfMisses === 9 ? removeStars() : (numberOfMisses === 11 ? removeStars() : (numberOfMisses > 14 ? star.text("0 stars!"))));
 // }
-  if (numberOfMisses === 4) {
-    removeStars();
-  } else if (numberOfMisses === 6) {
+  if (numberOfMisses === 6) {
     removeStars();
   } else if (numberOfMisses === 9) {
     removeStars();
   } else if (numberOfMisses === 11) {
     removeStars();
-  } else if (numberOfMisses > 14) {
-    star.text("0 Stars!");
-    starRating = 0;
+  } else if (numberOfMisses === 14) {
+    removeStars();
   }
 }
 
