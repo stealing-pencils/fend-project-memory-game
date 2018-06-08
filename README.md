@@ -26,8 +26,9 @@ memory.
 The player's star rating begins at 5 and will reduce by 1 to 0 as more guesses are
 made wrongly.  The timer will continue until the player finds all of the matching
 cards.  The player's final star rating and time to complete the game will be
-summarised at the end of the game.  The player can reset the game at any time
-using the reset button at the top right-hand corner of the page.
+summarised at the end of the game.  The player's moves will be also be displayed,
+based on each pair that has been wrongly upturned. The player can reset the game
+at any time using the reset button at the top right-hand corner of the page.
 
 
 ## Code Reliance

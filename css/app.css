@@ -122,9 +122,22 @@ h1 {
   float: left;
 }
 
-.timer #heading {
+.timer .heading {
   padding-right: 10px;
   color: orange;
+}
+
+.moves .heading {
+  color: orange;
+}
+
+#number_of_moves {
+  padding-left: 10px;
+}
+
+.restart {
+  position:absolute; top:15%; right:30%;
+  font-weight: bolder;
 }
 
 /* The Modal (background) */
@@ -161,7 +174,7 @@ button {
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    color: orange;
     float: right;
     padding-left: 10px;
     font-size: 28px;

@@ -18,6 +18,7 @@
  let modalInner = document.getElementById("modalMessage");
  let timerSeconds = document.getElementById("seconds");
  let timerMinutes = document.getElementById("minutes");
+ let numberOfMoves = document.getElementById("number_of_moves");
 
 /** Shuffle function from http://stackoverflow.com/a/2450976 */
  function shuffle(array) {
@@ -83,6 +84,7 @@ function cardMatch(listOfCards) {
   } else {
     /** counts how many failed attempts have been made to match cards */
     numberOfMisses ++;
+    moveCounter();
     /**  if the cards do not match, remove the cards from the list and hide
     * the card's symbol (put this functionality in another function
     * that you call from this one) */
@@ -147,6 +149,12 @@ function removeStars(){
 reloadIcon.on("click", function reloadGame(evt) {
  location.reload();
 })
+
+/** displays moves made */
+function moveCounter(numberOfMisses) {
+  numberOfMoves.innerText = numberOfMisses;
+}
+
 
 
 /** stars game timer */
