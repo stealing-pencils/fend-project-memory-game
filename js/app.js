@@ -148,9 +148,7 @@ reloadIcon.on("click", function reloadGame(evt) {
 })
 
 /** displays moves made */
-function moveCounter(numberOfMisses) {
-  numberOfMoves.innerText = numberOfMisses;
-}
+let moveCounter = (numberOfMisses) => numberOfMoves.innerText = numberOfMisses;
 
 
 
@@ -165,9 +163,10 @@ function startTimer() {
 }
 
 /** stops game timer */
-function stopTimer() {
-        clearInterval(timer);
-}
+const stopTimer = () => clearInterval(timer);
+// function stopTimer() {
+//         clearInterval(timer);
+// }
 
 // *** MODAL *** //
 
