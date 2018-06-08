@@ -146,15 +146,24 @@ h1 {
 .modal-content {
     background-color: #fefefe;
     margin: auto;
+    text-align: center;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+}
+
+button {
+  text-align: center;
+  font-size: 15px;
+  background-color: MidnightBlue;
+  color: orange;
 }
 
 /* The Close Button */
 .close {
     color: #aaaaaa;
     float: right;
+    padding-left: 10px;
     font-size: 28px;
     font-weight: bold;
 }
