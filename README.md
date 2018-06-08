@@ -2,19 +2,33 @@
 
 ## Table of Contents
 
+* [Play the game](#play the game)
 * [Instructions](#instructions)
-* [Contributing](#contributing)
+* [Code Reliance](#Code Reliance)
+
+## Play the game
+
+[Github preview of the Matching Game](http://htmlpreview.github.io/?https://github.com/
+stealing-pencils/fend-project-memory-game/blob/master/index.html)
+
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+The game begins with 16 cards, all facing down.  Each card has a symbol that matches one other,
+making 8 pairs of cards.  The objective of the game is to find each pair with as few
+moves as possible and as quickly as possible.
 
-To get started, open `js/app.js` and start building out the app's functionality
+The player can click on any two cards at a time.  When a pair is found,
+these matching cards will remain upturned.  If the player clicks on two cards that do
+not match, they will both returned to their downward facing position, ready for the
+player's next guess.  The player must remember where each card lays, to test their
+memory.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
-## Contributing
+## Code Reliance
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+- Udacity Memory Game project starter code used.
+- [Stackoverflow shuffle  function](https://stackoverflow.com/questions/2450954/
+  how-to-randomize-shuffle-a-javascript-array/2450976#2450976)
+- [Based Modal on W3Schools starter modal](https://www.w3schools.com/howto/howto_css_modals.asp)
+- [Referenced this code to create the timer](http://logicalmoon.com/2015/05/using-javascript-to-create-a-timer/) 
