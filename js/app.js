@@ -84,7 +84,7 @@ function cardMatch(listOfCards) {
   } else {
     /** counts how many failed attempts have been made to match cards */
     numberOfMisses ++;
-    moveCounter();
+    moveCounter(numberOfMisses);
     /**  if the cards do not match, remove the cards from the list and hide
     * the card's symbol (put this functionality in another function
     * that you call from this one) */
@@ -107,12 +107,12 @@ function allFaceDown() {
     $(".open").removeClass("show open");
     listOfCards.length = 0;
   }, 1500);
-  moveCounter(numberOfMisses);
+  starCounter(numberOfMisses);
 }
 
 
 
-function moveCounter(numberOfMisses){
+function starCounter(numberOfMisses){
 
   // numberOfMisses === 4 ? removeStars() : (numberOfMisses === 6 ? removeStars() : (numberOfMisses === 9 ? removeStars() : (numberOfMisses === 11 ? removeStars() : (numberOfMisses > 14 ? star.text("0 stars!"))));
 // }
