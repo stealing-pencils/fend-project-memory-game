@@ -2,13 +2,10 @@
 
 ## Table of Contents
 
-* Play the game
 * Instructions
-* Code Reliance
-
-## Play the game
-
-[Github preview of the Matching Game](http://htmlpreview.github.io/?https://github.com/stealing-pencils/fend-project-memory-game/blob/master/index.html)
+* Dependencies
+* Contributing
+* Play the game
 
 
 ## Instructions
@@ -23,17 +20,28 @@ not match, they will both be returned to their downward facing position, ready f
 player's next guess.  The player must remember where each card lays, to test their
 memory.
 
-The player's star rating begins at 5 and will reduce by 1 to 0 as more guesses are
+The player's star rating begins at 5 and will reduce by 1 as more guesses are
 made wrongly.  The timer will continue until the player finds all of the matching
 cards.  The player's final star rating and time to complete the game will be
-summarised at the end of the game.  The player's moves will be also be displayed,
+summarised at the end of the game.  The player's moves will also be displayed,
 based on each pair that has been wrongly upturned. The player can reset the game
 at any time using the reset button at the top right-hand corner of the page.
 
 
-## Code Reliance
+## Dependencies
 
 - Udacity Memory Game project starter code used.
 - [Stackoverflow shuffle  function](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976)
 - [Based Modal on W3Schools starter modal](https://www.w3schools.com/howto/howto_css_modals.asp)
-- [Referenced this code to create the timer](http://logicalmoon.com/2015/05/using-javascript-to-create-a-timer/)
+- [Timer from logicalmoon](http://logicalmoon.com/2015/05/using-javascript-to-create-a-timer/)
+
+
+## Contributing
+
+This repository is the starter code for all Udacity students. Therefore, we most likely will not accept pull requests.
+
+For details, check out [CONTRIBUTING.md](https://github.com/DennisKnie/Udacity-Memory-Game/blob/master/CONTRIBUTING.md)
+
+## Play the game
+
+[Github preview of the Matching Game](http://htmlpreview.github.io/?https://github.com/stealing-pencils/fend-project-memory-game/blob/master/index.html)
