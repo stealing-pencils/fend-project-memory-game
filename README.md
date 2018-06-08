@@ -2,14 +2,13 @@
 
 ## Table of Contents
 
-* [Play the game](#play the game)
-* [Instructions](#instructions)
-* [Code Reliance](#Code Reliance)
+* Play the game
+* Instructions
+* Code Reliance
 
 ## Play the game
 
-[Github preview of the Matching Game](http://htmlpreview.github.io/?https://github.com/
-stealing-pencils/fend-project-memory-game/blob/master/index.html)
+[Github preview of the Matching Game](http://htmlpreview.github.io/?https://github.com/stealing-pencils/fend-project-memory-game/blob/master/index.html)
 
 
 ## Instructions
@@ -34,7 +33,6 @@ using the reset button at the top right-hand corner of the page.
 ## Code Reliance
 
 - Udacity Memory Game project starter code used.
-- [Stackoverflow shuffle  function](https://stackoverflow.com/questions/2450954/
-  how-to-randomize-shuffle-a-javascript-array/2450976#2450976)
+- [Stackoverflow shuffle  function](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976)
 - [Based Modal on W3Schools starter modal](https://www.w3schools.com/howto/howto_css_modals.asp)
 - [Referenced this code to create the timer](http://logicalmoon.com/2015/05/using-javascript-to-create-a-timer/)
