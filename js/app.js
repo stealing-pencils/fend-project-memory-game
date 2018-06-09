@@ -63,7 +63,8 @@ function initGame() {
 function showCard(evt) {
   if ($(evt).hasClass("noDuplicate") && listOfCards[1] === undefined) {
     /** Prevents same card from matching itself */
-    addCardToList(evt[1]);
+    console.log("we are at showCard" + ($(evt[1])));
+    // addCardToList(evt[1]);
   } else {
     $(evt).addClass("open show");
     /**  - add the card to a *list* of "open" cards (put this functionality
@@ -74,7 +75,7 @@ function showCard(evt) {
 
 /** add open card to the list of open cards */
 function addCardToList(card) {
-  listOfCards.length === 0 ? ($(".open").addClass("noDuplicate"), listOfCards.push(card)) : listOfCards.push(card);
+  listOfCards.length === 0 ? ($(".open").addClass("noDuplicate"), listOfCards.push(card)) : (listOfCards.push(card), console.log("got here"));
 }
 
 /**  if the list already has another card, check to see if the two
@@ -83,10 +84,17 @@ function cardMatch(listOfCards) {
   $(".open").removeClass("noDuplicate");
   let cardOne = $(listOfCards[0]).html();
   let cardTwo = $(listOfCards[1]).html();
+  console.log(cardOne, cardTwo);
   if (cardOne === cardTwo) {
     $(".open").addClass("match");
     cardMatchCounter ++;
     gameFinishCheck(cardMatchCounter);
+  } else if (cardTwo === undefined) {
+    console.log("buck stops here");
+    listOfCards.length = 1;
+    console.log(listOfCards.length);
+    console.log(listOfCards[0]);
+
   } else {
     /** counts how many failed attempts have been made to match cards */
     numberOfMisses ++;
@@ -108,7 +116,6 @@ function allFaceDown() {
   }, 1500);
   starCounter(numberOfMisses);
 }
-
 
 
 function starCounter(numberOfMisses){
@@ -145,6 +152,9 @@ reloadIcon.on("click", function reloadGame(evt) {
 function moveCounter(numberOfMisses) {
   numberOfMoves.innerText = numberOfMisses;
 }
+
+
+// *** TIMER *** //
 
 /** stars game timer */
 function startTimer() {
