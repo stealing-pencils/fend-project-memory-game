@@ -94,7 +94,12 @@ function cardMatch(listOfCards) {
     /**  if the cards do not match, remove the cards from the list and hide
     * the card's symbol (put this functionality in another function
     * that you call from this one) */
-    allFaceDown();
+    if ($(".open").hasClass(".noDuplicate")) {
+      console.log("got to listOfCards pop");
+      listOfCards.pop();
+    } else {
+      allFaceDown();
+    }
   }
 }
 
