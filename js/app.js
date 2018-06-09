@@ -18,7 +18,6 @@
  let timerSeconds = document.getElementById("seconds");
  let timerMinutes = document.getElementById("minutes");
  let numberOfMoves = document.getElementById("number_of_moves");
- let preventDuplicate = 0;
 
 
 /** Shuffle function from http://stackoverflow.com/a/2450976 */
@@ -64,8 +63,8 @@ function initGame() {
 function showCard(evt) {
   if ($(evt).hasClass("noDuplicate") && listOfCards[1] === undefined) {
     /** Prevents same card from matching itself */
-    console.log("keep first card open, ready for next card");
-    console.log(listOfCards.length);
+    console.log("we are at showCard" + ($(evt[1])));
+    // addCardToList(evt[1]);
   } else {
     $(evt).addClass("open show");
     /**  - add the card to a *list* of "open" cards (put this functionality
@@ -82,19 +81,15 @@ function addCardToList(card) {
 /**  if the list already has another card, check to see if the two
 cards match */
 function cardMatch(listOfCards) {
-  preventDuplicate ++;
-  console.log("this is the number of prevent duplicate counts"+ preventDuplicate);
-  console.log("at cardMatch");
   $(".open").removeClass("noDuplicate");
   let cardOne = $(listOfCards[0]).html();
   let cardTwo = $(listOfCards[1]).html();
   console.log(cardOne, cardTwo);
-  if (cardOne === cardTwo && preventDuplicate < 2) {
+  if (cardOne === cardTwo) {
     $(".open").addClass("match");
     cardMatchCounter ++;
     gameFinishCheck(cardMatchCounter);
   } else if (cardTwo === undefined) {
-    console.log("preventduplicate counter total at else if in card match" + preventDuplicate);
     console.log("buck stops here");
     listOfCards.length = 1;
     console.log(listOfCards.length);
@@ -102,8 +97,6 @@ function cardMatch(listOfCards) {
 
   } else {
     /** counts how many failed attempts have been made to match cards */
-    console.log("got to number of misses counter");
-    preventDuplicate = 0;
     numberOfMisses ++;
     moveCounter(numberOfMisses);
     /**  if the cards do not match, remove the cards from the list and hide
