@@ -62,9 +62,7 @@ function initGame() {
 /** displays card */
 function showCard(evt) {
   if ($(evt).hasClass("noDuplicate") && listOfCards[1] === undefined) {
-    console.log("no cheating!");
-    console.log("length of list of cards is " + listOfCards.length);
-    console.log(evt[1]);
+    /** Prevents same card from matching itself */
     addCardToList(evt[1]);
   } else {
     $(evt).addClass("open show");
@@ -76,9 +74,8 @@ function showCard(evt) {
 
 /** add open card to the list of open cards */
 function addCardToList(card) {
-  listOfCards.length === 0 ? ($(".open").addClass("noDuplicate"), listOfCards.push(card)) : (listOfCards.push(card), console.log(listOfCards[0]));
+  listOfCards.length === 0 ? ($(".open").addClass("noDuplicate"), listOfCards.push(card)) : listOfCards.push(card);
 }
-
 
 /**  if the list already has another card, check to see if the two
 cards match */
@@ -97,20 +94,12 @@ function cardMatch(listOfCards) {
     /**  if the cards do not match, remove the cards from the list and hide
     * the card's symbol (put this functionality in another function
     * that you call from this one) */
-    if ($(".open").hasClass(".noDuplicate")) {
-      console.log("got to listOfCards pop");
-      listOfCards.pop();
-    } else {
-      allFaceDown();
-    }
+    allFaceDown();
   }
 }
 
 /** if the cards do match, lock the cards in the open position
 *(put this functionality in another function that you call from this one) */
-
-
-
 
 function allFaceDown() {
   setTimeout(function(){
@@ -123,7 +112,6 @@ function allFaceDown() {
 
 
 function starCounter(numberOfMisses){
-
   // numberOfMisses === 4 ? removeStars() : (numberOfMisses === 6 ? removeStars() : (numberOfMisses === 9 ? removeStars() : (numberOfMisses === 11 ? removeStars() : (numberOfMisses > 14 ? star.text("0 stars!"))));
 // }
   if (numberOfMisses === 6) {
@@ -138,10 +126,8 @@ function starCounter(numberOfMisses){
 }
 
 /** removes stars from score panel */
-function removeStars(){
-  starRating --;
-  star[starRating].remove();
-}
+let removeStars = () => (starRating --, star[starRating].remove());
+
 
 /**  if all cards have matched, display a message
 * with the final score (put this functionality in another
@@ -149,8 +135,6 @@ function removeStars(){
  function gameFinishCheck(cardMatchCounter) {
    cardMatchCounter < 8 ? listOfCards.length = 0 : (gameOverModal(starRating), stopTimer());
  }
-
-
 
 /** reloadIcons game */
 reloadIcon.on("click", function reloadGame(evt) {
@@ -162,11 +146,9 @@ function moveCounter(numberOfMisses) {
   numberOfMoves.innerText = numberOfMisses;
 }
 
-
-
 /** stars game timer */
 function startTimer() {
-     var seconds = 0;
+     let seconds = 0;
      timer = setInterval(function() {
        seconds ++;
        timerSeconds.innerText = seconds % 60;
@@ -175,9 +157,8 @@ function startTimer() {
 }
 
 /** stops game timer */
-function stopTimer() {
-        clearInterval(timer);
-}
+let stopTimer = () => clearInterval(timer);
+
 
 // *** MODAL *** //
 
