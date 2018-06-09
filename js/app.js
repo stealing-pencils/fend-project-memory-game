@@ -10,6 +10,7 @@
  let numberOfMisses = 0;
  let cardMatchCounter = 0;
  let listOfCards = [];
+ let lockCardsOpen = [];
  let star = $(".score-panel ul li");
  let starRating = star.length;
  let reloadIcon = $(".score-panel li");
@@ -18,8 +19,6 @@
  let timerSeconds = document.getElementById("seconds");
  let timerMinutes = document.getElementById("minutes");
  let numberOfMoves = document.getElementById("number_of_moves");
- let preventDuplicate = 0;
-
 
 /** Shuffle function from http://stackoverflow.com/a/2450976 */
  function shuffle(array) {
@@ -62,40 +61,28 @@ function initGame() {
 
 /** displays card */
 function showCard(evt) {
-  if ($(evt).hasClass("noDuplicate") && listOfCards[1] === undefined) {
-    /** Prevents same card from matching itself */
-    console.log("keep first card open, ready for next card");
-    console.log(listOfCards.length);
-  } else {
-    $(evt).addClass("open show");
-    /**  - add the card to a *list* of "open" cards (put this functionality
-    in another function that you call from this one) */
-    addCardToList(evt);
-  }
+  $(evt).addClass("open show");
+/**  - add the card to a *list* of "open" cards (put this functionality
+in another function that you call from this one) */
+  addCardToList(evt);
 }
 
 /** add open card to the list of open cards */
 function addCardToList(card) {
-  listOfCards.length === 0 ? ($(".open").addClass("noDuplicate"), listOfCards.push(card)) : (listOfCards.push(card), console.log("got here"));
+  listOfCards.push(card);
 }
 
 /**  if the list already has another card, check to see if the two
 cards match */
 function cardMatch(listOfCards) {
-  preventDuplicate ++;
-  $(".open").removeClass("noDuplicate");
   let cardOne = $(listOfCards[0]).html();
   let cardTwo = $(listOfCards[1]).html();
-  console.log(cardOne, cardTwo);
-  if (cardOne === cardTwo && preventDuplicate < 2) {
+  if (cardOne === cardTwo) {
     $(".open").addClass("match");
-    cardMatchCounter ++;
-    gameFinishCheck(cardMatchCounter);
-  } else if (cardTwo === undefined) {
-    console.log("keeps card open if double clicked");
+    keepCardsOpen(cardOne, cardTwo);
+
   } else {
     /** counts how many failed attempts have been made to match cards */
-    preventDuplicate = 0;
     numberOfMisses ++;
     moveCounter(numberOfMisses);
     /**  if the cards do not match, remove the cards from the list and hide
@@ -107,6 +94,13 @@ function cardMatch(listOfCards) {
 
 /** if the cards do match, lock the cards in the open position
 *(put this functionality in another function that you call from this one) */
+  function keepCardsOpen (cardOne, cardTwo) {
+    lockCardsOpen.push(cardOne, cardTwo);
+    cardMatchCounter ++;
+    gameFinishCheck(cardMatchCounter);
+  }
+
+
 
 function allFaceDown() {
   setTimeout(function(){
@@ -117,7 +111,9 @@ function allFaceDown() {
 }
 
 
+
 function starCounter(numberOfMisses){
+
   // numberOfMisses === 4 ? removeStars() : (numberOfMisses === 6 ? removeStars() : (numberOfMisses === 9 ? removeStars() : (numberOfMisses === 11 ? removeStars() : (numberOfMisses > 14 ? star.text("0 stars!"))));
 // }
   if (numberOfMisses === 6) {
@@ -132,8 +128,10 @@ function starCounter(numberOfMisses){
 }
 
 /** removes stars from score panel */
-let removeStars = () => (starRating --, star[starRating].remove());
-
+function removeStars(){
+  starRating --;
+  star[starRating].remove();
+}
 
 /**  if all cards have matched, display a message
 * with the final score (put this functionality in another
@@ -142,22 +140,21 @@ let removeStars = () => (starRating --, star[starRating].remove());
    cardMatchCounter < 8 ? listOfCards.length = 0 : (gameOverModal(starRating), stopTimer());
  }
 
+
+
 /** reloadIcons game */
 reloadIcon.on("click", function reloadGame(evt) {
  location.reload();
 })
 
 /** displays moves made */
-function moveCounter(numberOfMisses) {
-  numberOfMoves.innerText = numberOfMisses;
-}
+let moveCounter = (numberOfMisses) => numberOfMoves.innerText = numberOfMisses;
 
 
-// *** TIMER *** //
 
 /** stars game timer */
 function startTimer() {
-     let seconds = 0;
+     var seconds = 0;
      timer = setInterval(function() {
        seconds ++;
        timerSeconds.innerText = seconds % 60;
@@ -166,8 +163,10 @@ function startTimer() {
 }
 
 /** stops game timer */
-let stopTimer = () => clearInterval(timer);
-
+const stopTimer = () => clearInterval(timer);
+// function stopTimer() {
+//         clearInterval(timer);
+// }
 
 // *** MODAL *** //
 
