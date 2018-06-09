@@ -61,8 +61,11 @@ function initGame() {
 
 /** displays card */
 function showCard(evt) {
-  if ($(evt).hasClass("noDuplicate")) {
+  if ($(evt).hasClass("noDuplicate") && listOfCards[1] === undefined) {
     console.log("no cheating!");
+    console.log("length of list of cards is " + listOfCards.length);
+    console.log(evt[1]);
+    addCardToList(evt[1]);
   } else {
     $(evt).addClass("open show");
     /**  - add the card to a *list* of "open" cards (put this functionality
@@ -73,7 +76,7 @@ function showCard(evt) {
 
 /** add open card to the list of open cards */
 function addCardToList(card) {
-  listOfCards.length === 0 ? ($(".open").addClass("noDuplicate"), listOfCards.push(card)) : listOfCards.push(card);
+  listOfCards.length === 0 ? ($(".open").addClass("noDuplicate"), listOfCards.push(card)) : (listOfCards.push(card), console.log(listOfCards[0]));
 }
 
 
