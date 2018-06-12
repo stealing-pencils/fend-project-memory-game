@@ -98,9 +98,7 @@ function cardMatch(listOfCards) {
   }
 }
 
-/** if the cards do match, lock the cards in the open position
-*(put this functionality in another function that you call from this one) */
-
+/** turn cards down if they don't match */
 function allFaceDown() {
   setTimeout(function(){
     $(".open").removeClass("show open");
@@ -110,10 +108,7 @@ function allFaceDown() {
 }
 
 
-
 function starCounter(numberOfMisses){
-  // numberOfMisses === 4 ? removeStars() : (numberOfMisses === 6 ? removeStars() : (numberOfMisses === 9 ? removeStars() : (numberOfMisses === 11 ? removeStars() : (numberOfMisses > 14 ? star.text("0 stars!"))));
-// }
   if (numberOfMisses === 6) {
     removeStars();
   } else if (numberOfMisses === 9) {
@@ -136,7 +131,7 @@ let removeStars = () => (starRating --, star[starRating].remove());
    cardMatchCounter < 8 ? listOfCards.length = 0 : (gameOverModal(starRating), stopTimer());
  }
 
-/** reloadIcons game */
+/** reloads game using reload button */
 reloadIcon.on("click", function reloadGame(evt) {
  location.reload();
 })
@@ -145,6 +140,9 @@ reloadIcon.on("click", function reloadGame(evt) {
 function moveCounter(numberOfMisses) {
   numberOfMoves.innerText = numberOfMisses;
 }
+
+
+// *** TIMER *** //
 
 /** stars game timer */
 function startTimer() {
@@ -187,5 +185,5 @@ function buttonFunction() {
   location.reload();
 }
 
-/** starts game */
+/** STARTS GAME ON CLICK */
 initGame();
