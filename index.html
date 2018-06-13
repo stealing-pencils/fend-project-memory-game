@@ -30,15 +30,15 @@
             <span class="heading">Moves Made:</span>
             <span id="number_of_moves"></span>
           </div>
-          <!-- restart button -->
-          <div class="restart">
-      		  <li class="fa fa-repeat"></i>
-      	  </div>
           <span class="timer">
             <span class ="heading">Timer:</span>
             <span id="minutes">0</span> minute(s)
             <span id="seconds">0</span> seconds.
           </span>
+          <!-- restart button -->
+          <div class="restart">
+      		  <li class="fa fa-repeat"></i>
+      	  </div>
         </section>
         <!-- Modal appears after Game Over -->
         <div id="modalOnFinish" class="modal">
@@ -50,8 +50,10 @@
           </div>
         </div>
         <!-- deck of cards -->
-        <ul class="deck">
-        </ul>
+        <section class = "game_body">
+          <ul class="deck">
+          </ul>
+        </section>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/app.js"></script>
