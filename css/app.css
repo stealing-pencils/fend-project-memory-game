@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    height: 50%;
 }
 
 *,
@@ -10,10 +11,8 @@ html {
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    /* width: 100%;
+    height: 100%; */
     color: MidnightBlue;
 }
 
@@ -21,6 +20,10 @@ body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
+
+/* header {
+  margin: auto;
+} */
 
 .container {
     display: flex;
@@ -39,10 +42,10 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
+    width: 100%;
+    min-height: 100%;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
+    /* padding: 32px; */
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
@@ -50,11 +53,14 @@ h1 {
     justify-content: space-between;
     align-items: center;
     margin: 0 0 3em;
+
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
+    height: 8px;
+    width: 8px;
+    padding: 12%;
+    margin: 0;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -68,7 +74,7 @@ h1 {
 
 
 .deck .card.show {
-    font-size: 33px;
+    font-size: 100%;
 }
 
 .deck .card.open {
@@ -89,8 +95,8 @@ h1 {
  */
 
 .score-panel {
-    text-align: left;
-    width: 345px;
+    text-align: center;
+    width: 100%;
     margin-bottom: 10px;
 }
 
@@ -110,24 +116,18 @@ h1 {
     display: inline-block;
 }
 
-.score-panel .restart {
-    float: right;
-    cursor: pointer;
-    padding: 10px;
-    color: orange;
 
-}
 
-.timer {
-  float: left;
-}
 
 .timer .heading {
+  text-align: center;
   padding-right: 10px;
   color: orange;
 }
 
 .moves .heading {
+  text-align: center;
+  margin: auto;
   color: orange;
 }
 
@@ -135,10 +135,15 @@ h1 {
   padding-left: 10px;
 }
 
+
 .restart {
-  position:absolute; top:15%; right:30%;
   font-weight: bolder;
+  text-align: center;
+  cursor: pointer;
+  padding: 8px;
+  color: orange;
 }
+
 
 /* The Modal (background) */
 .modal {
@@ -186,4 +191,134 @@ button {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+/***  MEDIA QUERIES ***/
+
+
+@media only screen and (max-width: 1440px){
+
+  .score-panel {
+    height: 80px;
+    font-size: 17px;
+
+  }
+
+  .deck {
+    width: 500px;
+    height: 500px;
+    margin-top: 30px;
+    padding: 7%;
+    font-size: 30px;
+  }
+
+  .deck .card {
+    border: 10px;
+
+
+}
+
+@media only screen and (max-width: 768px){
+
+  .score-panel {
+    height: 80px;
+    font-size: 17px;
+
+  }
+
+  .deck {
+    width: 500px;
+    height: 500px;
+    margin-top: 30px;
+    padding: 7%;
+    font-size: 30px;
+  }
+
+  .deck .card {
+    border: 10px;
+
+}
+
+
+@media only screen and (max-width: 600px){
+
+  .score-panel {
+    height: 80px;
+    font-size: 17px;
+
+  }
+
+  .deck {
+    width: 500px;
+    height: 500px;
+    margin-top: 30px;
+    padding: 7%;
+    font-size: 30px;
+  }
+
+  .deck .card {
+    border: 10px;
+}
+
+@media only screen and (max-width: 425px){
+
+  .score-panel {
+    height: 80px;
+    font-size: 15px;
+    /* margin: 10px; */
+  }
+
+  .deck {
+    width: 400px;
+    height: 400px;
+    margin-top: 10px;
+    padding: 7%;
+    font-size: 30px;
+  }
+
+  .deck .card {
+    border: 10px;
+}
+
+@media only screen and (max-width: 375px){
+
+  .score-panel {
+    height: 80px;
+    font-size: 12px;
+    /* margin: 10px; */
+  }
+
+  .deck {
+    width: 300px;
+    height: 300px;
+    padding: 7%;
+    font-size: 20px;
+  }
+
+  .deck .card {
+    border: 10px;
+}
+
+
+
+
+
+@media only screen and (max-width: 320px){
+
+    .score-panel {
+      height: 80px;
+      font-size: 12px;
+      /* margin: 10px; */
+    }
+
+    .deck {
+      width: 300px;
+      height: 300px;
+      padding: 7%;
+      font-size: 20px;
+    }
+
+    .deck .card {
+      border: 10px;
 }
